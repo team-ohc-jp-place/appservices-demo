@@ -6,7 +6,6 @@
 package io.debezium.examples.outbox.trade.service;
 
 import java.util.Date;
-import java.math.BigDecimal;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -64,12 +63,12 @@ public class TradeOrderService {
         final long orderId = Long.valueOf(event.get("orderId").asLong());
         final String orderType = event.get("orderType").asText();
         final String orderItemName = event.get("orderItemName").asText();
-        final BigDecimal quantity = new BigDecimal(event.get("quantity").asText());
-        final BigDecimal price = new BigDecimal(event.get("price").asText());
+        final String quantity = event.get("quantity").asText();
+        final String price = event.get("price").asText();
         final String shipmentAddress = event.get("shipmentAddress").asText();
         final String zipCode = event.get("zipCode").asText();
-        final BigDecimal totalAmount = new BigDecimal(event.get("totalAmount").asText());
-        final BigDecimal deliveryFee = new BigDecimal(event.get("deliveryFee").asText());
+        final String totalAmount = event.get("totalAmount").asText();
+        final String deliveryFee = event.get("deliveryFee").asText();
         final String stateCode = event.get("stateCode").asText();
         final String stateName = event.get("stateName").asText();
 

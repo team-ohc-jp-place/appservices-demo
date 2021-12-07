@@ -6,7 +6,6 @@
 package io.debezium.examples.outbox.trade.model;
 
 import java.util.Date;
-import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,12 +26,12 @@ public class TradeOrder {
     private String orderType;
     //追加
     private String orderItemName;
-    private BigDecimal quantity; //元からある int → BigDecimal
-    private BigDecimal price; //元からある String → BigDecimal
+    private String quantity; //元からある int → String
+    private String price; //元からある
     private String shipmentAddress;
     private String zipCode;
-    private BigDecimal totalAmount;
-    private BigDecimal deliveryFee;
+    private String totalAmount;
+    private String deliveryFee;
     private String stateCode;
     private String stateName;
 
@@ -47,7 +46,7 @@ public class TradeOrder {
     TradeOrder() {
     }
 
-    public TradeOrder(long orderId, String orderType, String orderItemName, BigDecimal quantity, BigDecimal price, String shipmentAddress, String zipCode, BigDecimal totalAmount, BigDecimal deliveryFee, String stateCode, String stateName) {
+    public TradeOrder(long orderId, String orderType, String orderItemName, String quantity, String price, String shipmentAddress, String zipCode, String totalAmount, String deliveryFee, String stateCode, String stateName) {
         this.orderId = orderId;
         this.orderType = orderType;
         this.orderItemName = orderItemName;
@@ -109,19 +108,19 @@ public class TradeOrder {
     //    this.symbol = symbol;
     //}
 
-    public BigDecimal getQuantity() {
+    public String getQuantity() {
         return this.quantity;
     }
 
-    public void setQuantity(BigDecimal quantity) {
+    public void setQuantity(String quantity) {
         this.quantity = quantity;
     }
 
-    public BigDecimal getPrice() {
+    public String getPrice() {
         return this.price;
     }
 
-    public void setPrice(BigDecimal price){
+    public void setPrice(String price){
         this.price = price;
     }
 
@@ -141,19 +140,19 @@ public class TradeOrder {
         this.zipCode = zipCode;
     }
 
-    public BigDecimal getTotalAmount() {
+    public String getTotalAmount() {
         return this.totalAmount;
     }
 
-    public void setTotalAmount(BigDecimal totalAmount) {
+    public void setTotalAmount(String totalAmount) {
         this.totalAmount = totalAmount;
     }
 
-    public BigDecimal getDeliveryFee() {
+    public String getDeliveryFee() {
         return this.deliveryFee;
     }
 
-    public void setDeliveryFee(BigDecimal deliveryFee) {
+    public void setDeliveryFee(String deliveryFee) {
         this.deliveryFee = deliveryFee;
     }
 

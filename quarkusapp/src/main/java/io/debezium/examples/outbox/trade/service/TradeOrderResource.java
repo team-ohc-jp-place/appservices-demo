@@ -1,7 +1,7 @@
 package io.debezium.examples.outbox.trade.service;
 
-import java.math.BigDecimal;
 import java.util.Date;
+import java.math.BigDecimal;
 
 import javax.inject.Inject;
 import javax.ws.rs.Produces;
@@ -48,12 +48,12 @@ public class TradeOrderResource {
         final long orderId = 110L;
         final String orderType = "E";
         final String orderItemName = "Lemon";
-        final BigDecimal quantity = new BigDecimal(100);
-        final BigDecimal price = new BigDecimal(50);
+        final String quantity = new BigDecimal("100").toString();
+        final String price = new BigDecimal("50").toString();
         final String shipmentAddress = "12345";
         final String zipCode = "12345";
-        final BigDecimal totalAmount = new BigDecimal(5000);
-        final BigDecimal deliveryFee = new BigDecimal(200);
+        final String totalAmount = new BigDecimal("5000").toString();
+        final String deliveryFee = new BigDecimal("200").toString();
         final String stateCode = "12345";
         final String stateName = "12345";
 
