@@ -30,9 +30,9 @@ oc apply -f ./openshift/quarkusapp/bc-quarkusapp.yml
 ## DeploymentConfig
 oc apply -f ./openshift/quarkusapp/dc-quarkusapp.yml
 ## Service
-oc apply -f ./openshift/quarkusapp/service-trade-orders.yml
+oc apply -f ./openshift/quarkusapp/service-quarkusapp.yml
 ## Route
-oc apply -f ./openshift/quarkusapp/quarkus-route.yml
+oc apply -f ./openshift/quarkusapp/route-quarkusapp.yml
 
 ### まとめて
 oc apply -f ./openshift/quarkusapp/is-quarkusapp.yml

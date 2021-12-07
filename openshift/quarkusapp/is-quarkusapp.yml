@@ -12,7 +12,7 @@ spec:
   - annotations: null
     from:
       kind: DockerImage
-      name: image-registry.openshift-image-registry.svc:5000/daytrader/quarkusapp:latest
+      name: image-registry.openshift-image-registry.svc:5000/commons-demo/quarkusapp:latest
     generation: null
     importPolicy: {}
     name: latest
