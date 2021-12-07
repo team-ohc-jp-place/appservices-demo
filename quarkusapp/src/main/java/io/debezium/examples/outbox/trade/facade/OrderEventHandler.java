@@ -39,6 +39,7 @@ public class OrderEventHandler {
 
         try {
             LOGGER.info("Starting onOrderEvent");
+            LOGGER.info("これはテスト");
 
             JsonNode eventJson = deserialize(payload);
             //LOGGER.info("#1 " + eventJson.asText());
