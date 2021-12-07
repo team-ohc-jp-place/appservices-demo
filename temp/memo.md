@@ -6,17 +6,17 @@ export JAVA_HOME=`/usr/libexec/java_home -v 11.0.2`
 oc new-project demo-pj
 
 # AQM Streams Operator インストール
-oc apply -f ../openshift/kafka/amq-streams-operator.yaml
+oc apply -f ./openshift/kafka/amq-streams-operator.yaml
 
 # kafka-cluster 作成 (demo-cluster)
-oc apply -f ../openshift/kafka/kafka.yml
+oc apply -f ./openshift/kafka/kafka.yml
 
 # kafdrop デプロイ
-oc apply -f ../openshift/kafka/kafdrop4.yml
+oc apply -f ./openshift/kafka/kafdrop4.yml
 
 
 # PostgreDB
-oc apply -f ../openshift/db/postgres.yml
+oc apply -f ./openshift/db/postgres.yml
 
 # daytrader のリミットレンジを削除
 oc delete limitrange demo-pj-core-resource-limits
@@ -24,22 +24,22 @@ oc delete limitrange demo-pj-core-resource-limits
 
 # Quarkus APP
 ## ImageStream
-oc apply -f ../openshift/quarkusapp/is-quarkus-trade-orders.yml
+oc apply -f ./openshift/quarkusapp/is-quarkusapp.yml
 ## BuildConfig
-oc apply -f ../openshift/quarkusapp/bc-quarkus-trade-orders.yml
+oc apply -f ./openshift/quarkusapp/bc-quarkusapp.yml
 ## DeploymentConfig
-oc apply -f ../openshift/quarkusapp/dc-quarkus-trade-orders.yml
+oc apply -f ./openshift/quarkusapp/dc-quarkusapp.yml
 ## Service
-oc apply -f ../openshift/quarkusapp/service-trade-orders.yml
+oc apply -f ./openshift/quarkusapp/service-trade-orders.yml
 ## Route
-oc apply -f ../openshift/quarkusapp/quarkus-route.yml
+oc apply -f ./openshift/quarkusapp/quarkus-route.yml
 
 ### まとめて
-oc apply -f ../openshift/quarkusapp/is-quarkus-trade-orders.yml
-oc apply -f ../openshift/quarkusapp/bc-quarkus-trade-orders.yml
-oc apply -f ../openshift/quarkusapp/dc-quarkus-trade-orders.yml
-oc apply -f ../openshift/quarkusapp/service-trade-orders.yml
-oc apply -f ../openshift/quarkusapp/quarkus-route.yml
+oc apply -f ./openshift/quarkusapp/is-quarkusapp.yml
+oc apply -f ./openshift/quarkusapp/bc-quarkusapp.yml
+oc apply -f ./openshift/quarkusapp/dc-quarkusapp.yml
+oc apply -f ./openshift/quarkusapp/service-quarkusapp.yml
+oc apply -f ./openshift/quarkusapp/route-quarkusapp.yml
 
 ## ターミナルからトピック送信
 oc exec -n demo-pj -it demo-cluster-kafka-0 -- bin/kafka-console-producer.sh --bootstrap-server demo-cluster-kafka-brokers:9092 --topic daytrader.inventory.outboxevent
@@ -55,15 +55,15 @@ oc exec -n demo-pj -it demo-cluster-kafka-0 -- bin/kafka-console-producer.sh --b
 mvn clean compile package -DskipTests
 
 #### ビルド（初回のみ）
-oc new-build --binary --name=quarkus-trade-orders -l app=modern-app -n daytrader
+oc new-build --binary --name=quarkusapp -l app=modern-app -n daytrader
 
 #### docker（初回のみ？）
-oc patch bc/quarkus-trade-orders -p "{\"spec\":{\"strategy\":{\"dockerStrategy\":{\"dockerfilePath\":\"src/main/docker/Dockerfile.jvm\"}}}}" -n daytrader
+oc patch bc/quarkusapp -p "{\"spec\":{\"strategy\":{\"dockerStrategy\":{\"dockerfilePath\":\"src/main/docker/Dockerfile.jvm\"}}}}" -n daytrader
 
 #### ビルド
-oc start-build quarkus-trade-orders --from-dir=. --follow -n daytrader
+oc start-build quarkusapp --from-dir=. --follow -n daytrader
 
 #### アプリスタート
-oc new-app --image-stream=quarkus-trade-orders
+oc new-app --image-stream=quarkusapp
 
 oc expose service 

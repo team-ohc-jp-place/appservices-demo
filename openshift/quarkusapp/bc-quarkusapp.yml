@@ -2,8 +2,8 @@ apiVersion: build.openshift.io/v1
 kind: BuildConfig
 metadata:
   labels:
-    app: quarkus-trade-orders
-  name: quarkus-trade-orders
+    app: quarkusapp
+  name: quarkusapp
   namespace: demo-pj
 spec:
   failedBuildsHistoryLimit: 5
@@ -11,7 +11,7 @@ spec:
   output:
     to:
       kind: ImageStreamTag
-      name: quarkus-trade-orders:latest
+      name: quarkusapp:latest
   postCommit: {}
   resources:
     limits:
@@ -20,7 +20,7 @@ spec:
   runPolicy: Serial
   source:
     git:
-      uri: https://github.com/kamorisan/quarkus-daytrader.git
+      uri: https://github.com/kamorisan/commons-demo.git
     type: Git
     contextDir: "quarkusapp"
   strategy:

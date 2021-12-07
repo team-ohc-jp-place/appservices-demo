@@ -1,7 +1,7 @@
 kind: "DeploymentConfig"
 apiVersion: "v1"
 metadata:
-  name: "quarkus-trade-orders"
+  name: "quarkusapp"
   namespace: demo-pj
   labels:
     app.kubernetes.io/part-of: modern-app
@@ -9,23 +9,23 @@ spec:
   template: 
     metadata:
       labels:
-        name: "quarkus-trade-orders"
+        name: "quarkusapp"
     spec:
       containers:
-        - name: "quarkus-trade-orders"
-          image: "daytrader/quarkus-trade-orders"
+        - name: "quarkusapp"
+          image: "daytrader/quarkusapp"
   replicas: 1 
   selector:
-    name: "quarkus-trade-orders"
+    name: "quarkusapp"
   triggers:
     - type: "ConfigChange" 
     - type: "ImageChange" 
       imageChangeParams:
         automatic: true
         containerNames:
-          - "quarkus-trade-orders"
+          - "quarkusapp"
         from:
           kind: "ImageStreamTag"
-          name: "quarkus-trade-orders:latest"
+          name: "quarkusapp:latest"
   strategy: 
     type: "Rolling"

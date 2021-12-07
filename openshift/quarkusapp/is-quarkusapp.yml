@@ -2,8 +2,8 @@ apiVersion: image.openshift.io/v1
 kind: ImageStream
 metadata:
   labels:
-    app: quarkus-trade-orders
-  name: quarkus-trade-orders
+    app: quarkusapp
+  name: quarkusapp
   namespace: demo-pj
 spec:
   lookupPolicy:
@@ -12,7 +12,7 @@ spec:
   - annotations: null
     from:
       kind: DockerImage
-      name: image-registry.openshift-image-registry.svc:5000/daytrader/quarkus-trade-orders:latest
+      name: image-registry.openshift-image-registry.svc:5000/daytrader/quarkusapp:latest
     generation: null
     importPolicy: {}
     name: latest
