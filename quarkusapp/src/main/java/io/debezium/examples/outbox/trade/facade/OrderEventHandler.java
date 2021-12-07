@@ -39,43 +39,36 @@ public class OrderEventHandler {
 
         try {
             LOGGER.info("Starting onOrderEvent");
-            LOGGER.info("これはテスト");
 
             JsonNode eventJson = deserialize(payload);
-            //LOGGER.info("#1 " + eventJson.asText());
+            LOGGER.info("#1 " + eventJson.asText());
 
-            //UUID eventId = UUID.fromString(eventJson.get("ID").textValue());
-            //LOGGER.info("#2 " + eventId.toString());
+            UUID eventId = UUID.fromString(eventJson.get("ID").textValue());
+            LOGGER.info("#2 " + eventId.toString());
 
-            //String eventType = eventJson.get("TYPE").textValue();
-            //LOGGER.info("#3 " + eventType);
+            String eventType = eventJson.get("TYPE").textValue();
+            LOGGER.info("#3 " + eventType);
 
-            //IDが重複していた場合には無視して処理終わる
-            //if (log.alreadyProcessed(eventId)) {
-            //    LOGGER.info("Event with UUID {} was already retrieved, ignoring it", eventId);
-            //    return;
-            //}
+
+            if (log.alreadyProcessed(eventId)) {
+                LOGGER.info("Event with UUID {} was already retrieved, ignoring it", eventId);
+                return;
+            }
 
             LOGGER.info("Continuing onOrderEvent");
 
-            //jsonからPAYLOAD抜き出し
-            //JsonNode eventPayload = eventJson.get("PAYLOAD");
-            JsonNode eventPayload = eventJson;
+            JsonNode eventPayload = eventJson.get("PAYLOAD");
 
-            LOGGER.info("JsonNode eventPayload = eventJson;");
+            LOGGER.info("Received 'Order' event -- event id: '{}', event type: '{}'", eventId, eventType);
 
-            //LOGGER.info("Received 'Order' event -- event id: '{}', event type: '{}'", eventId, eventType);
-
-            //TradeOrderService呼び出し
-            //if (eventType.equals("OrderCreated")) {
+            if (eventType.equals("OrderCreated")) {
                 shipmentService.orderCreated(eventPayload);
-            //}
-            //else {
-            //    LOGGER.warn("Unkown event type");
-            //}
+            }
+            else {
+                LOGGER.warn("Unkown event type");
+            }
 
-            //IDを格納
-            //log.processed(eventId);
+            log.processed(eventId);
 
         }
         catch(Exception e) {
@@ -98,10 +91,7 @@ public class OrderEventHandler {
             throw new RuntimeException("Couldn't deserialize event", e);
         }
 
-        return eventPayload;
-        //return eventPayload.get("payload").get("after");
-        //return eventPayload.get("payload").get("after") : eventPayload;
-        //return eventPayload.has("schema") ? eventPayload.get("payload").get("after") : eventPayload;
+        return eventPayload.has("schema") ? eventPayload.get("payload").get("after") : eventPayload;
     }
 
     public static void main(String[] args){
