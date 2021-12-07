@@ -49,7 +49,8 @@ public class TradeOrderService {
         //Textから変換の場合は必要
         //event = objectMapper.readTree(event.asText());
 
-        LOGGER.info("type: " + event.get("type") + " " + event.get("type").asText());
+        //LOGGER.info("type: " + event.get("type") + " " + event.get("type").asText());
+        LOGGER.info("Order ID: " + event.get("orderId"));
 
         //final long orderId = Long.valueOf(event.get("id").asText());
         //final String orderType = event.get("type").asText();
