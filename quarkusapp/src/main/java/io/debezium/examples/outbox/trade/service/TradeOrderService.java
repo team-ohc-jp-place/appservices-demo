@@ -45,7 +45,7 @@ public class TradeOrderService {
         LOGGER.info("Processing 'OrderCreated' event: {}", event);
 
         //event = objectMapper.readTree(event.asText());
-        event = objectMapper.readTree(event);
+        //event = objectMapper.readTree(event);
 
         LOGGER.info("type: " + event.get("type") + " " + event.get("type").asText());
 
