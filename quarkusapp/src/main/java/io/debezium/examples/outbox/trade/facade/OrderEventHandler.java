@@ -91,7 +91,8 @@ public class OrderEventHandler {
             throw new RuntimeException("Couldn't deserialize event", e);
         }
 
-        return eventPayload.has("schema") ? eventPayload.get("payload").get("after") : eventPayload;
+        return eventPayload.get("payload").get("after") : eventPayload;
+        //return eventPayload.has("schema") ? eventPayload.get("payload").get("after") : eventPayload;
     }
 
     public static void main(String[] args){

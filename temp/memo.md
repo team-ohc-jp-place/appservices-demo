@@ -41,6 +41,13 @@ oc apply -f ./openshift/quarkusapp/dc-quarkusapp.yml
 oc apply -f ./openshift/quarkusapp/service-quarkusapp.yml
 oc apply -f ./openshift/quarkusapp/route-quarkusapp.yml
 
+### 消したい時
+oc delete is/quarkusapp
+oc delete bc/quarkusapp
+oc delete dc/quarkusapp
+oc delete svc/quarkusapp
+oc delete routes/quarkusapp
+
 ## ターミナルからトピック送信
 oc exec -n demo-pj -it demo-cluster-kafka-0 -- bin/kafka-console-producer.sh --bootstrap-server demo-cluster-kafka-brokers:9092 --topic daytrader.inventory.outboxevent
 
