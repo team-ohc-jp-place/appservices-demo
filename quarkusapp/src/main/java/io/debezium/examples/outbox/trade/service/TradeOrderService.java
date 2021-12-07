@@ -73,6 +73,7 @@ public class TradeOrderService {
         final String stateCode = event.get("stateCode").asText();
         final String stateName = event.get("stateName").asText();
 
+        LOGGER.info("Quantity: " + event.get("quantity"));
 
         LOGGER.info("Going to persist 'TradeOrder'");
 
