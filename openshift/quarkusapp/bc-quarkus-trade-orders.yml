@@ -22,6 +22,7 @@ spec:
     git:
       uri: https://github.com/kamorisan/quarkus-daytrader.git
     type: Git
+    contextDir: "quarkusapp"
   strategy:
     sourceStrategy:
       from:
