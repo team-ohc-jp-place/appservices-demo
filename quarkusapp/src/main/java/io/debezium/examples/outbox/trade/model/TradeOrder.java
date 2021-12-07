@@ -6,6 +6,7 @@
 package io.debezium.examples.outbox.trade.model;
 
 import java.util.Date;
+import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,40 +21,53 @@ public class TradeOrder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", updatable = false, nullable = false)
-    private long id;
+    @Column(name = "orderId", updatable = false, nullable = false)
+    //private long id;
     private long orderId;
     private String orderType;
+    //追加
+    private String orderItemName;
+    private BigDecimal quantity; //元からある int → BigDecimal
+    private BigDecimal price; //元からある String → BigDecimal
+    private String shipmentAddress;
+    private String zipCode;
+    private BigDecimal totalAmount;
+    private BigDecimal deliveryFee;
+    private String stateCode;
+    private String stateName;
 
     //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM-dd-yyyy")
-    private Date openDate;
-    private String symbol;
-    private int quantity;
-    private String price;
-    private String orderFee;
-    private int accountId;
+    //private Date openDate;
+    //private String symbol;
+    //private int quantity;
+    //private String price;
+    //private String orderFee;
+    //private int accountId;
 
     TradeOrder() {
     }
 
-    public TradeOrder(long orderId, String orderType, Date openDate, String symbol, int quantity, String price, String orderFee, int accountId) {
+    public TradeOrder(long orderId, String orderType, String orderItemName, BigDecimal quantity, BigDecimal price, String shipmentAddress, String zipCode, BigDecimal totalAmount, BigDecimal deliveryFee, String stateCode, String stateName) {
         this.orderId = orderId;
         this.orderType = orderType;
-        this.openDate = openDate;
-        this.symbol = symbol;
+        this.orderItemName = orderItemName;
         this.quantity = quantity;
         this.price = price;
-        this.orderFee = orderFee;
-        this.accountId = accountId;
+        this.shipmentAddress = shipmentAddress;
+        this.zipCode = zipCode;
+        this.totalAmount = totalAmount;
+        this.deliveryFee = deliveryFee;
+        this.stateCode = stateCode;
+        this.stateName = stateName;
     }
 
-    public long getId() {
-        return id;
-    }
+    //public long getId() {
+    //    return id;
+    //}
 
-    public void setId(long id) {
-        this.id = id;
-    }
+    //public void setId(long id) {
+    //    this.id = id;
+    //}
 
     public long getOrderId() {
         return orderId;
@@ -71,51 +85,107 @@ public class TradeOrder {
         this.orderType = orderType;
     }
 
-    public Date getOpenDate() {
-        return openDate;
+    public String getOrderItemName() {
+        return this.orderItemName;
     }
 
-    public void setOpenDate(Date openDate) {
-        this.openDate = openDate;
+    public void setOrderItemName(String orderItemName) {
+        this.orderItemName = orderItemName;
     }
 
-    public String getSymbol() {
-        return this.symbol;
-    }
+    //public Date getOpenDate() {
+    //    return openDate;
+    //}
 
-    public void setSymbol(String symbol){
-        this.symbol = symbol;
-    }
+    //public void setOpenDate(Date openDate) {
+    //    this.openDate = openDate;
+    //}
 
-    public int getQuantity() {
+    //public String getSymbol() {
+    //    return this.symbol;
+    //}
+
+    //public void setSymbol(String symbol){
+    //    this.symbol = symbol;
+    //}
+
+    public BigDecimal getQuantity() {
         return this.quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(BigDecimal quantity) {
         this.quantity = quantity;
     }
 
-    public String getPrice() {
+    public BigDecimal getPrice() {
         return this.price;
     }
 
-    public void setPrice(String price){
+    public void setPrice(BigDecimal price){
         this.price = price;
     }
 
-    public String getOrderFee(){
-        return this.orderFee;
+    public String getShipmentAddress() {
+        return this.shipmentAddress;
     }
 
-    public void setOrderFee(String orderFee){
-        this.orderFee = orderFee;
+    public void setShipmentAddress(String shipmentAddress) {
+        this.shipmentAddress = shipmentAddress;
     }
 
-    public int getAccountId(){
-        return this.accountId;
+    public String getZipCode() {
+        return this.zipCode;
     }
 
-    public void setAccountId(int accountId){
-        this.accountId = accountId;
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
     }
+
+    public BigDecimal getTotalAmount() {
+        return this.totalAmount;
+    }
+
+    public void setTotalAmount(BigDecimal totalAmount) {
+        this.totalAmount = totalAmount;
+    }
+
+    public BigDecimal getDeliveryFee() {
+        return this.deliveryFee;
+    }
+
+    public void setDeliveryFee(BigDecimal deliveryFee) {
+        this.deliveryFee = deliveryFee;
+    }
+
+    public String getStateCode() {
+        return this.stateCode;
+    }
+
+    public void setStateCode(String stateCode) {
+        this.stateCode = stateCode;
+    }
+
+    public String getStateName() {
+        return this.stateName;
+    }
+
+    public void setStateName(String stateName) {
+        this.stateName = stateName;
+    }
+
+    //public String getOrderFee(){
+    //    return this.orderFee;
+    //}
+
+    //public void setOrderFee(String orderFee){
+    //    this.orderFee = orderFee;
+    //}
+
+    //public int getAccountId(){
+    //    return this.accountId;
+    //}
+
+    //public void setAccountId(int accountId){
+    //    this.accountId = accountId;
+    //}
 }

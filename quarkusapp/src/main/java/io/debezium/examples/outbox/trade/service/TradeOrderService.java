@@ -6,6 +6,7 @@
 package io.debezium.examples.outbox.trade.service;
 
 import java.util.Date;
+import java.math.BigDecimal;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -41,26 +42,41 @@ public class TradeOrderService {
 
     @Transactional(value = TxType.MANDATORY)
     public void orderCreated(JsonNode event) throws JsonMappingException, JsonProcessingException {
+        
         //LOGGER.info("Processing 'OrderCreated' event: {}", event.asText());
         LOGGER.info("Processing 'OrderCreated' event: {}", event);
 
+        //Textから変換の場合は必要
         //event = objectMapper.readTree(event.asText());
-        //event = objectMapper.readTree(event);
 
         LOGGER.info("type: " + event.get("type") + " " + event.get("type").asText());
 
-        final long orderId = Long.valueOf(event.get("id").asText());
-        final String orderType = event.get("type").asText();
-        final Date openDate = new Date(event.get("openDate").asLong());
-        final String symbol = event.get("symbol").asText();
-        final int quantity = event.get("quantity").asInt();
-        final String price = event.get("price").asText();
-        final String orderFee= event.get("orderFee").asText();
-        final int accountId = event.get("accountId").asInt();
+        //final long orderId = Long.valueOf(event.get("id").asText());
+        //final String orderType = event.get("type").asText();
+        //final Date openDate = new Date(event.get("openDate").asLong());
+        //final String symbol = event.get("symbol").asText();
+        //final int quantity = event.get("quantity").asInt();
+        //final String price = event.get("price").asText();
+        //final String orderFee= event.get("orderFee").asText();
+        //final int accountId = event.get("accountId").asInt();
+
+        final long orderId = Long.valueOf(event.get("orderId").asLong());
+        final String orderType = event.get("orderType").asText();
+        final String orderItemName = event.get("orderItemName").asText();
+        final BigDecimal quantity = new BigDecimal(event.get("quantity").asText());
+        final BigDecimal price = new BigDecimal(event.get("price").asText());
+        final String shipmentAddress = event.get("shipmentAddress").asText();
+        final String zipCode = event.get("zipCode").asText();
+        final BigDecimal totalAmount = new BigDecimal(event.get("totalAmount").asText());
+        final BigDecimal deliveryFee = new BigDecimal(event.get("deliveryFee").asText());
+        final String stateCode = event.get("stateCode").asText();
+        final String stateName = event.get("stateName").asText();
+
 
         LOGGER.info("Going to persist 'TradeOrder'");
 
-        TradeOrder tradeOrder = new TradeOrder(orderId, orderType, openDate, symbol, quantity, price, orderFee, accountId);
+        //TradeOrder tradeOrder = new TradeOrder(orderId, orderType, openDate, symbol, quantity, price, orderFee, accountId);
+        TradeOrder tradeOrder = new TradeOrder(orderId, orderType, orderItemName, quantity, price, shipmentAddress, zipCode, totalAmount, deliveryFee, stateCode, stateName);
 
         LOGGER.info("Persisting 'TradeOrder': {}", tradeOrder);
 

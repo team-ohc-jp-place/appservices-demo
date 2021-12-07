@@ -58,6 +58,10 @@ oc exec -n demo-pj -it demo-cluster-kafka-0 -- bin/kafka-console-producer.sh --b
 
 {"ID":"5efa6b1b-d0d0-4bae-be0b-3c7fd0eac38f","AGGREGATETYPE":"Order","AGGREGATEID":"75001","TYPE":"OrderCreated","PAYLOAD":"{\"id\":75001,\"type\":\"buy\",\"openDate\":1638515751061,\"symbol\":\"s:0\",\"quantity\":100.0,\"price\":241.69,\"orderFee\":24.95,\"accountId\":0}"}
 
+{"id":75001,"type":"buy","openDate":1638515751061,"symbol":"s:0","quantity":100,"price":241.69,"orderFee":24.95,"accountId":0}
+{"id":75002,"type":"buy","openDate":1638515751062,"symbol":"s:0","quantity":100,"price":241.69,"orderFee":24.95,"accountId":0}
+{"id":75003,"type":"buy","openDate":1638515751063,"symbol":"s:0","quantity":100,"price":241.69,"orderFee":24.95,"accountId":0}
+
 
 以下は備忘
 #### コンパイル（ローカルで）
