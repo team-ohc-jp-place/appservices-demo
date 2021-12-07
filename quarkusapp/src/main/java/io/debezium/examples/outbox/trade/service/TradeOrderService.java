@@ -41,9 +41,11 @@ public class TradeOrderService {
 
     @Transactional(value = TxType.MANDATORY)
     public void orderCreated(JsonNode event) throws JsonMappingException, JsonProcessingException {
-        LOGGER.info("Processing 'OrderCreated' event: {}", event.asText());
+        //LOGGER.info("Processing 'OrderCreated' event: {}", event.asText());
+        LOGGER.info("Processing 'OrderCreated' event: {}", event);
 
-        event = objectMapper.readTree(event.asText());
+        //event = objectMapper.readTree(event.asText());
+        event = objectMapper.readTree(event);
 
         LOGGER.info("type: " + event.get("type") + " " + event.get("type").asText());
 

@@ -55,11 +55,13 @@ public class OrderEventHandler {
             //    return;
             //}
 
-            //LOGGER.info("Continuing onOrderEvent");
+            LOGGER.info("Continuing onOrderEvent");
 
             //jsonからPAYLOAD抜き出し
             //JsonNode eventPayload = eventJson.get("PAYLOAD");
             JsonNode eventPayload = eventJson;
+
+            LOGGER.info("JsonNode eventPayload = eventJson;");
 
             //LOGGER.info("Received 'Order' event -- event id: '{}', event type: '{}'", eventId, eventType);
 
