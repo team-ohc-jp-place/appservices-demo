@@ -81,7 +81,7 @@ public class TradeOrderService {
 
         LOGGER.info("Persisting 'TradeOrder': {}", tradeOrder);
 
-        entityManager.persist(tradeOrder);
+        //entityManager.persist(tradeOrder);
 
         final JsonObject jsonObject = JsonObject.mapFrom(tradeOrder);
         eventBus.publish("order_stream", jsonObject);
