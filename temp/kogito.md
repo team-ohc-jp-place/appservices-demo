@@ -14,5 +14,16 @@ oc new-app --image-stream=cep-kogito \
 
 
 
+# デプロイ
+oc apply -f ./openshift/kogito/is-decision-service.yml -n commons-demo
+oc apply -f ./openshift/kogito/bc-decision-service.yml -n commons-demo
+oc apply -f ./openshift/kogito/dc-decision-service.yml -n commons-demo
+oc apply -f ./openshift/kogito/service-decision-service.yml -n commons-demo
+oc apply -f ./openshift/kogito/route-decision-service.yml -n commons-demo
 
-oc apply -f ./openshift/kogito/bc-decision-service.yml
+# 消したい
+oc delete is/decision-service -n commons-demo
+oc delete bc/decision-service -n commons-demo
+oc delete dc/decision-service -n commons-demo
+oc delete svc/decision-service -n commons-demo
+oc delete route/decision-service -n commons-demo

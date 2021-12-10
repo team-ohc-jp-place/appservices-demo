@@ -4,23 +4,25 @@ GraalVMだとエラーになる
 export JAVA_HOME=`/usr/libexec/java_home -v 11.0.2`
 
 # Project 作成
-oc new-project demo-pj
+oc new-project commons-demo
 
 # AQM Streams Operator インストール
 oc apply -f ./openshift/kafka/amq-streams-operator.yaml
 
+## ここは不要　shared-kafka-earth PJのものを使う
 # kafka-cluster 作成 (demo-cluster)
 oc apply -f ./openshift/kafka/kafka.yml
 
+## ここは不要　shared-kafka-earth PJのものを使う
 # kafdrop デプロイ
 oc apply -f ./openshift/kafka/kafdrop4.yml
 
-
+## ここは不要　DB見ないようにした
 # PostgreDB
 oc apply -f ./openshift/db/postgres.yml
 
-# daytrader のリミットレンジを削除
-oc delete limitrange demo-pj-core-resource-limits
+# リミットレンジを削除
+oc delete limitrange commons-demo-pj-core-resource-limits
 
 
 # Quarkus APP
@@ -76,3 +78,11 @@ oc start-build quarkusapp --from-dir=. --follow -n daytrader
 oc new-app --image-stream=quarkusapp
 
 oc expose service 
+
+
+# 消したい
+oc delete is/quarkusapp -n commons-demo
+oc delete bc/quarkusapp -n commons-demo
+oc delete dc/quarkusapp -n commons-demo
+oc delete svc/quarkusapp -n commons-demo
+oc delete route/quarkusapp -n commons-demo

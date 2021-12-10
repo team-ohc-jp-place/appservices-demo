@@ -2,7 +2,7 @@ apiVersion: kafka.strimzi.io/v1beta2
 kind: Kafka
 metadata:
   name: demo-cluster
-  namespace: demo-pj
+  namespace: commons-demo
 spec:
   kafka:
     version: 2.8.0
