@@ -2,9 +2,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.redhat.demo.webapp</groupId>
-  <artifactId>earth-orders-service</artifactId>
-  <name>OpenshiftCommons 2021 Demo - Earth Orders Service</name>
+  <groupId>com.redhat.demo.kogito</groupId>
+  <artifactId>decision-service</artifactId>
+  <name>OpenshiftCommons 2021 Demo - Decision Service</name>
   <version>1.0.0-SNAPSHOT</version>
 
   <properties>
@@ -24,6 +24,24 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
+
+      <!-- kogito -->
+      <dependency>
+        <groupId>org.kie.kogito</groupId>
+        <artifactId>kogito-quarkus-bom</artifactId>
+        <version>0.8.1</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.kie.kogito</groupId>
+        <artifactId>kogito-quarkus</artifactId>
+      </dependency>
+      <dependency>
+        <groupId>org.kie.kogito</groupId>
+        <artifactId>drools-decisiontables</artifactId>
+      </dependency>
+
     </dependencies>
   </dependencyManagement>
 

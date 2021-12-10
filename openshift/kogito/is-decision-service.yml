@@ -2,8 +2,8 @@ apiVersion: image.openshift.io/v1
 kind: ImageStream
 metadata:
   labels:
-    app: quarkusapp
-  name: quarkusapp
+    app: decision-service
+  name: decision-service
   namespace: commons-demo
 spec:
   lookupPolicy:
@@ -12,7 +12,7 @@ spec:
   - annotations: null
     from:
       kind: DockerImage
-      name: image-registry.openshift-image-registry.svc:5000/commons-demo/quarkusapp:latest
+      name: image-registry.openshift-image-registry.svc:5000/commons-demo/decision-service:latest
     generation: null
     importPolicy: {}
     name: latest

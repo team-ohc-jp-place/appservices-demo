@@ -1,0 +1,36 @@
+package com.redhat.demo.kogito.service;
+unit EarthOrderUnit
+
+import java.math.BigDecimal;
+import com.redhat.demo.kogito.service.EarthOrder;
+
+rule "Calculate Total Amount" when
+    $p : /eventStream[
+        $Quantity:quantity >= 0, 
+        $Price:price >= 0, 
+        $orderItemName: orderItemName != null
+        ]
+then
+    BigDecimal TotalAmount = $Quantity.multiply($Price);
+    $p.setTotalAmount(TotalAmount);
+    System.out.println("orderItemName: "+ $orderItemName +", quantity: "+ $Quantity + ", price: "+ $Price + ", totalAmount: "+ $p.totalAmount);
+    update($p);
+end
+
+//rule "Check ZipCode" when
+//    $p : /eventStream[
+//        $ZipCode:zipCode matches "[+-]?\\d*(\\.\\d+)?"
+//        ]
+//then
+//    System.out.println("zipCode is Number. zipCode: "+ $ZipCode);
+//    update($p);
+//end
+
+//rule "Check ZipCode 2" when
+//    $p : /eventStream[
+//        $ZipCode:zipCode not matches "[+-]?\\d*(\\.\\d+)?"
+//        ]
+//then
+//    System.out.println("zipCode is String. zipCode: "+ $ZipCode);
+//    update($p);
+//end

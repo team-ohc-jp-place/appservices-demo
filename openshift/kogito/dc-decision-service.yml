@@ -1,7 +1,7 @@
 kind: "DeploymentConfig"
 apiVersion: "v1"
 metadata:
-  name: "quarkusapp"
+  name: "decision-service"
   namespace: commons-demo
   labels:
     app.kubernetes.io/part-of: modern-app
@@ -9,23 +9,23 @@ spec:
   template: 
     metadata:
       labels:
-        name: "quarkusapp"
+        name: "decision-service"
     spec:
       containers:
-        - name: "quarkusapp"
-          image: "commons-demo/quarkusapp"
+        - name: "decision-service"
+          image: "commons-demo/decision-service"
   replicas: 1 
   selector:
-    name: "quarkusapp"
+    name: "decision-service"
   triggers:
     - type: "ConfigChange" 
     - type: "ImageChange" 
       imageChangeParams:
         automatic: true
         containerNames:
-          - "quarkusapp"
+          - "decision-service"
         from:
           kind: "ImageStreamTag"
-          name: "quarkusapp:latest"
+          name: "decision-service:latest"
   strategy: 
     type: "Rolling"

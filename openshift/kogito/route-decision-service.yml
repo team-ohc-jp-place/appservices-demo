@@ -1,0 +1,13 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  creationTimestamp: null
+  name: decision-service
+spec:
+  port:
+    targetPort: 8080
+  to:
+    kind: ""
+    name: decision-service
+    weight: null
+status: {}
