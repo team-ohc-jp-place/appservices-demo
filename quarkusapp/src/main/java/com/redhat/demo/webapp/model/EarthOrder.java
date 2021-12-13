@@ -46,7 +46,7 @@ public class EarthOrder {
     }
 
     public String getOrderType() {
-        return this.orderType;
+        return orderType;
     }
 
     public void setOrderType(String orderType) {
@@ -54,7 +54,7 @@ public class EarthOrder {
     }
 
     public String getOrderItemName() {
-        return this.orderItemName;
+        return orderItemName;
     }
 
     public void setOrderItemName(String orderItemName) {
@@ -62,7 +62,7 @@ public class EarthOrder {
     }
 
     public String getQuantity() {
-        return this.quantity;
+        return quantity;
     }
 
     public void setQuantity(String quantity) {
@@ -70,7 +70,7 @@ public class EarthOrder {
     }
 
     public String getPrice() {
-        return this.price;
+        return price;
     }
 
     public void setPrice(String price){
@@ -78,7 +78,7 @@ public class EarthOrder {
     }
 
     public String getShipmentAddress() {
-        return this.shipmentAddress;
+        return shipmentAddress;
     }
 
     public void setShipmentAddress(String shipmentAddress) {
@@ -86,7 +86,7 @@ public class EarthOrder {
     }
 
     public String getZipCode() {
-        return this.zipCode;
+        return zipCode;
     }
 
     public void setZipCode(String zipCode) {
@@ -94,7 +94,7 @@ public class EarthOrder {
     }
 
     public String getTotalAmount() {
-        return this.totalAmount;
+        return totalAmount;
     }
 
     public void setTotalAmount(String totalAmount) {
@@ -102,7 +102,7 @@ public class EarthOrder {
     }
 
     public String getDeliveryFee() {
-        return this.deliveryFee;
+        return deliveryFee;
     }
 
     public void setDeliveryFee(String deliveryFee) {
@@ -110,7 +110,7 @@ public class EarthOrder {
     }
 
     public String getStateCode() {
-        return this.stateCode;
+        return stateCode;
     }
 
     public void setStateCode(String stateCode) {
@@ -118,7 +118,7 @@ public class EarthOrder {
     }
 
     public String getStateName() {
-        return this.stateName;
+        return stateName;
     }
 
     public void setStateName(String stateName) {
