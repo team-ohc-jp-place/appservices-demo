@@ -62,7 +62,7 @@ oc exec -n shared-kafka-earth -it earth-cluster-kafka-0 -- bin/kafka-console-con
 
 {"orderId":1,"orderType":"E","orderItemName":"Lime","quantity":100,"price":50,"shipmentAddress":"541-428 Nulla Avenue","zipCode":"4286","totalAmount":5000,"deliveryFee":200,"stateCode":"12345","stateName":"12345"}
 
-{"orderType":"E","orderItemName":"Lime","quantity":100,"price":50,"shipmentAddress":"541-428 Nulla Avenue","zipCode":"4286"}
+{"orderId":1,"orderType":"E","orderItemName":"Lime","quantity":100,"price":50,"shipmentAddress":"541-428 Nulla Avenue","zipCode":"4286"}
 
 
 

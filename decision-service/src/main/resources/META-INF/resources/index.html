@@ -1,59 +1,152 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head>
+    <meta charset="UTF-8">
+    <title>decision-service - 1.0-SNAPSHOT</title>
+    <style>
+        h1, h2, h3, h4, h5, h6 {
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+            line-height: 1.5;
+        }
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        h1 {
+            font-size: 2.5rem;
+        }
 
-    <title>Earth Orders</title>
-  </head>
-  <body>
+        h2 {
+            font-size: 2rem
+        }
 
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-      <a class="navbar-brand" href="#">Earth Orders Lists</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    </nav>
+        h3 {
+            font-size: 1.75rem
+        }
 
-    <div style="padding: 70px;">
-      <table class="table table-dark table-striped">
-        <thead style="font-weight: bold; background-color: black;">
-          <!--
-          <td style="width:100px">Account ID</td>
-          <td style="width:100px">Order ID</td>
-          <td style="width:100px">Order Type</td>
-          <td style="width:100px">Open Date</td>
-          <td style="width:50px">Symbol</td>
-          <td style="width:125px; text-align: right;">Price</td>
-          <td style="width:125px; text-align: right;">Order Fee</td>
-          -->
-          <td style="width:50px">Order ID</td>
-          <td style="width:50px">Order Type</td>
-          <td style="width:100px">Order Item Name</td>
-          <td style="width:50px">Quantity</td>
-          <td style="width:50px">Price</td>
-          <td style="width:150px">Shipment Address</td>
-          <td style="width:100px">Zip Code</td>
-          <td style="width:50px">Total Amount</td>
-          <td style="width:50px">Delivery Fee</td>
-          <td style="width:50px">State Code</td>
-          <td style="width:100px">State Name</td>
-        </thead>
-        <tbody id="tbody">
-        </tbody>
-      </table>
+        h4 {
+            font-size: 1.5rem
+        }
 
+        h5 {
+            font-size: 1.25rem
+        }
+
+        h6 {
+            font-size: 1rem
+        }
+
+        .lead {
+            font-weight: 300;
+            font-size: 2rem;
+        }
+
+        .banner {
+            font-size: 2.7rem;
+            margin: 0;
+            padding: 2rem 1rem;
+            background-color: #00A1E2;
+            color: white;
+        }
+
+        body {
+            margin: 0;
+            font-family: -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        }
+
+        code {
+            font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-size: 87.5%;
+            color: #e83e8c;
+            word-break: break-word;
+        }
+
+        .left-column {
+            padding: .75rem;
+            max-width: 75%;
+            min-width: 55%;
+        }
+
+        .right-column {
+            padding: .75rem;
+            max-width: 25%;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+        }
+
+        li {
+            margin: 0.75rem;
+        }
+
+        .right-section {
+            margin-left: 1rem;
+            padding-left: 0.5rem;
+        }
+
+        .right-section h3 {
+            padding-top: 0;
+            font-weight: 200;
+        }
+
+        .right-section ul {
+            border-left: 0.3rem solid #00A1E2;
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="banner lead">
+    Your new Cloud-Native application is ready!
+</div>
+
+<div class="container">
+    <div class="left-column">
+        <p class="lead"> Congratulations, you have created a new Quarkus application.</p>
+
+        <h2>Why do you see this?</h2>
+
+        <p>This page is served by Quarkus. The source is in
+            <code>src/main/resources/META-INF/resources/index.html</code>.</p>
+
+        <h2>What can I do from here?</h2>
+
+        <p>If not already done, run the application in <em>dev mode</em> using: <code>mvn compile quarkus:dev</code>.
+        </p>
+        <ul>
+            <li>Add REST resources, Servlets, functions and other services in <code>src/main/java</code>.</li>
+            <li>Your static assets are located in <code>src/main/resources/META-INF/resources</code>.</li>
+            <li>Configure your application in <code>src/main/resources/application.properties</code>.
+            </li>
+        </ul>
+
+        <h2>How do I get rid of this page?</h2>
+        <p>Just delete the <code>src/main/resources/META-INF/resources/index.html</code> file.</p>
     </div>
+    <div class="right-column">
+        <div class="right-section">
+            <h3>Application</h3>
+            <ul>
+                <li>GroupId: module3.labfour</li>
+                <li>ArtifactId: decision-service</li>
+                <li>Version: 1.0-SNAPSHOT</li>
+                <li>Quarkus Version: 1.2.1.Final</li>
+            </ul>
+        </div>
+        <div class="right-section">
+            <h3>Next steps</h3>
+            <ul>
+                <li><a href="https://quarkus.io/guides/maven-tooling.html" target="_blank">Setup your IDE</a></li>
+                <li><a href="https://quarkus.io/guides/getting-started.html" target="_blank">Getting started</a></li>
+                <li><a href="https://quarkus.io" target="_blank">Quarkus Web Site</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="index.js"></script>
-  </body>
+
+</body>
 </html>
