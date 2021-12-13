@@ -39,11 +39,11 @@ public class EarthOrderService {
     public void orderCreated(JsonNode event) throws JsonMappingException, JsonProcessingException {
         
         //LOGGER.info("event: {}", event.asText());
-        LOGGER.info("event: {}", event);
+        LOGGER.info("event: '{}'", event);
 
         //event = objectMapper.readTree(event.asText());
 
-        LOGGER.info("Order ID: " + event.get("orderId"));
+        //LOGGER.info("Order ID: " + event.get("orderId"));
 
         final long orderId = event.get("orderId").asLong();
         final String orderType = event.get("orderType").asText();
@@ -57,9 +57,16 @@ public class EarthOrderService {
         final String stateCode = event.get("stateCode").asText();
         final String stateName = event.get("stateName").asText();
 
+        LOGGER.info("Order ID: '{}'" , orderId);
+        LOGGER.info("Quantity: '{}'" , quantity);
+
         EarthOrder earthOrder = new EarthOrder(orderId, orderType, orderItemName, quantity, price, shipmentAddress, zipCode, totalAmount, deliveryFee, stateCode, stateName);
 
+        LOGGER.info("set earthorder: '{}'" , earthOrder);
+
         final JsonObject jsonObject = JsonObject.mapFrom(earthOrder);
+
+        LOGGER.info("set jsonObject: '{}'" , jsonObject);
 
         eventBus.publish("order_stream", jsonObject);
 

@@ -47,7 +47,7 @@ oc apply -f ./openshift/quarkusapp/route-quarkusapp.yml
 ## ターミナルからトピック送信
 oc exec -n shared-kafka-earth -it earth-cluster-kafka-0 -- bin/kafka-console-producer.sh --bootstrap-server earth-cluster-kafka-brokers:9092 --topic incoming-topic
 
-oc exec -n shared-kafka-earth -it earth-cluster-kafka-0 -- bin/kafka-console-producer.sh --bootstrap-server earth-cluster-kafka-brokers:9092 --topic outgoing-topic
+oc exec -n shared-kafka-earth -it earth-cluster-kafka-0 -- bin/kafka-console-producer.sh --bootstrap-server earth-cluster-kafka-brokers:9092 --topic outcoming-topic
 
 ## ターミナルからトピック受信
 oc exec -n shared-kafka-earth -it earth-cluster-kafka-0 -- bin/kafka-console-consumer.sh --topic incoming-topic --bootstrap-server earth-cluster-kafka-brokers:9092
@@ -60,8 +60,10 @@ oc exec -n shared-kafka-earth -it earth-cluster-kafka-0 -- bin/kafka-console-con
 {"id":75001,"type":"buy","openDate":1638515751061,"symbol":"s:0","quantity":100.0,"price":241.69,"orderFee":24.95,"accountId":0}
 {"id":75001,"type":"buy","orderItemName":"Lemon","openDate":1638515751061,"symbol":"s:0","quantity":100.0,"price":241.69,"orderFee":24.95,"accountId":0}
 
+# outcoming topic用
 {"orderId":1,"orderType":"E","orderItemName":"Lime","quantity":100,"price":50,"shipmentAddress":"541-428 Nulla Avenue","zipCode":"4286","totalAmount":5000,"deliveryFee":200,"stateCode":"12345","stateName":"12345"}
 
+# incoming topic用
 {"orderId":1,"orderType":"E","orderItemName":"Lime","quantity":100,"price":50,"shipmentAddress":"541-428 Nulla Avenue","zipCode":"4286"}
 
 
