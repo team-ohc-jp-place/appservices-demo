@@ -8,6 +8,9 @@ oc new-project shared-kafka-earth
 oc new-project shared-app-earth
 oc new-project commons-demo
 
+# AMQ Streams Operator
+oc apply -f ./openshift/kafka/amq-streams-operator.yaml
+
 # Create Kafka Cluster
 oc apply -n shared-kafka-earth -f ./openshift/legacy/kafka-earth.yaml
 
