@@ -21,6 +21,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 
 @ApplicationScoped
 public class EarthOrderService {
@@ -30,15 +31,14 @@ public class EarthOrderService {
     @Inject
     EventBus eventBus;
 
-
-
     @Transactional(value = TxType.MANDATORY)
     public void orderCreated(JsonNode event) throws JsonMappingException, JsonProcessingException {
         
 
         LOGGER.info("event: '{}'", event);
 
-
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
 
 
 
