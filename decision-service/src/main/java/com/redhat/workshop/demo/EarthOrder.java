@@ -2,8 +2,9 @@ package com.redhat.workshop.demo;
 
 import java.math.BigDecimal;
 
-import javax.validation.OverridesAttribute;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+@JsonSerialize
 public class EarthOrder {
 
     long orderId;

@@ -27,23 +27,20 @@ public class EarthOrderService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(EarthOrderService.class);
 
-    private final ObjectMapper objectMapper = new ObjectMapper();
-
     @Inject
     EventBus eventBus;
 
-    @PersistenceContext
-    EntityManager entityManager;
+
 
     @Transactional(value = TxType.MANDATORY)
     public void orderCreated(JsonNode event) throws JsonMappingException, JsonProcessingException {
         
-        //LOGGER.info("event: {}", event.asText());
+
         LOGGER.info("event: '{}'", event);
 
-        //event = objectMapper.readTree(event.asText());
 
-        //LOGGER.info("Order ID: " + event.get("orderId"));
+
+
 
         final long orderId = event.get("orderId").asLong();
         final String orderType = event.get("orderType").asText();
