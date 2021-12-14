@@ -66,7 +66,11 @@ public class TradeOrderService {
 
         final JsonObject jsonObject = JsonObject.mapFrom(tradeOrder);
 
+        LOGGER.info("Check 'jsonObject': {}", jsonObject);
+
         eventBus.publish("order_stream", jsonObject);
+
+        LOGGER.info("eventBus.publish done");
     }
 
     @Transactional(value=TxType.MANDATORY)
