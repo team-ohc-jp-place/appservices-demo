@@ -35,7 +35,7 @@
   </dependencyManagement>
 
   <build>
-    <finalName>quarkusapp</finalName>
+    <finalName>shipment</finalName>
     <plugins>
       <plugin>
         <groupId>io.quarkus</groupId>
@@ -62,7 +62,6 @@
   </build>
 
   <dependencies>
-    <!--
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-hibernate-orm</artifactId>
@@ -71,8 +70,6 @@
         <groupId>io.quarkus</groupId>
         <artifactId>quarkus-jdbc-postgresql</artifactId>
     </dependency>
-    -->
-
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-resteasy</artifactId>

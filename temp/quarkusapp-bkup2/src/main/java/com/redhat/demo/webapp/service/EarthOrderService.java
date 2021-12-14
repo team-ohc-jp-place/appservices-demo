@@ -37,11 +37,22 @@ public class EarthOrderService {
 
         LOGGER.info("event: '{}'", event);
 
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
+        JsonObject json = new JsonObject();
+        json.put("orderId", event.get("orderId").asLong());
+        json.put("orderType" , event.get("orderType").asText());
+        json.put("orderItemName" , event.get("orderItemName").asText());
+        json.put("quantity" , event.get("quantity").asText());
+        json.put("price" , event.get("price").asText());
+        json.put("shipmentAddress" , event.get("shipmentAddress").asText());
+        json.put("zipCode" , event.get("zipCode").asText());
+        json.put("totalAmount" , event.get("totalAmount").asText());
+        json.put("deliveryFee" , event.get("deliveryFee").asText());
+        json.put("stateCode" , event.get("stateCode").asText());
+        json.put("stateName" , event.get("stateName").asText());
 
+        LOGGER.info("chech json: '{}'" , json);
 
-
+        /*
         final long orderId = event.get("orderId").asLong();
         final String orderType = event.get("orderType").asText();
         final String orderItemName = event.get("orderItemName").asText();
@@ -53,19 +64,23 @@ public class EarthOrderService {
         final String deliveryFee = event.get("deliveryFee").asText();
         final String stateCode = event.get("stateCode").asText();
         final String stateName = event.get("stateName").asText();
+        */
 
-        LOGGER.info("Order ID: '{}'" , orderId);
-        LOGGER.info("Quantity: '{}'" , quantity);
+        //LOGGER.info("Order ID: '{}'" , orderId);
+        //LOGGER.info("Quantity: '{}'" , quantity);
 
-        EarthOrder earthOrder = new EarthOrder(orderId, orderType, orderItemName, quantity, price, shipmentAddress, zipCode, totalAmount, deliveryFee, stateCode, stateName);
+        //EarthOrder earthOrder = new EarthOrder(orderId, orderType, orderItemName, quantity, price, shipmentAddress, zipCode, totalAmount, deliveryFee, stateCode, stateName);
 
-        LOGGER.info("set earthorder: '{}'" , earthOrder);
+        //LOGGER.info("set earthorder: '{}'" , earthOrder);
 
-        final JsonObject jsonObject = JsonObject.mapFrom(earthOrder);
+        //final JsonObject jsonObject = JsonObject.mapFrom(earthOrder);
 
-        LOGGER.info("set jsonObject: '{}'" , jsonObject);
+        //LOGGER.info("set jsonObject: '{}'" , jsonObject);
 
-        eventBus.publish("order_stream", jsonObject);
+        //eventBus.publish("order_stream", jsonObject);
+        
+        eventBus.publish("order_stream", json);
+        //eventBus.publish("order_stream", event);
 
         LOGGER.info("eventBusへ送信");
         
@@ -75,4 +90,5 @@ public class EarthOrderService {
     public void orderLineUpdated(JsonNode event) {
         LOGGER.info("Processing 'OrderLineUpdated' event: {}", event);
     }
+
 }

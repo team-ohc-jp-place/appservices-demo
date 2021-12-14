@@ -11,11 +11,11 @@ import java.util.UUID;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
+import io.vertx.core.json.JsonObject;
+import io.vertx.mutiny.core.eventbus.EventBus;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.redhat.demo.webapp.service.EarthOrderService;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -26,7 +26,7 @@ public class OrderEventHandler {
     private static final Logger LOGGER = LoggerFactory.getLogger(OrderEventHandler.class);
 
     @Inject
-    EarthOrderService shipmentService;
+    EventBus eventBus;
 
     private final ObjectMapper objectMapper = new ObjectMapper();
 
@@ -37,18 +37,28 @@ public class OrderEventHandler {
 
             LOGGER.info("イベント処理を開始します");
 
-            JsonNode eventJson = deserialize(payload);
+            JsonNode eventPayload = deserialize(payload);
 
-            LOGGER.info("デシリアライズ完了");
-
-            //JsonNode eventPayload = eventJson.get("PAYLOAD");
-            JsonNode eventPayload = eventJson;
-
-            //LOGGER.info("受信メッセージ: '{}'", eventPayload.asText());
             LOGGER.info("受信メッセージ: '{}'", eventPayload);
 
+            JsonObject json = new JsonObject();
+            json.put("orderId", eventPayload.get("orderId").asLong());
+            json.put("orderType" , eventPayload.get("orderType").asText());
+            json.put("orderItemName" , eventPayload.get("orderItemName").asText());
+            json.put("quantity" , eventPayload.get("quantity").asText());
+            json.put("price" , eventPayload.get("price").asText());
+            json.put("shipmentAddress" , eventPayload.get("shipmentAddress").asText());
+            json.put("zipCode" , eventPayload.get("zipCode").asText());
+            json.put("totalAmount" , eventPayload.get("totalAmount").asText());
+            json.put("deliveryFee" , eventPayload.get("deliveryFee").asText());
+            json.put("stateCode" , eventPayload.get("stateCode").asText());
+            json.put("stateName" , eventPayload.get("stateName").asText());
 
-            shipmentService.orderCreated(eventPayload);
+            LOGGER.info("JsonObjectへ変換: '{}'", json);
+
+            eventBus.publish("order_stream", json);
+    
+            LOGGER.info("eventBusへ送信");
 
         }
         catch(Exception e) {
