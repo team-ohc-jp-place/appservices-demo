@@ -2,13 +2,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>io.debezium.examples.outbox</groupId>
-  <artifactId>trade-orders-service</artifactId>
-  <name>Debezium Outbox Demo - Trade Orders Service</name>
+  <groupId>com.redhat.demo.webapp</groupId>
+  <artifactId>earth-orders-service</artifactId>
+  <name>OpenshiftCommons 2021 Demo - Earth Orders Service</name>
   <version>1.0.0-SNAPSHOT</version>
 
   <properties>
-    <version.quarkus>1.6.0.Final</version.quarkus>
+    <version.quarkus>1.8.0.Final</version.quarkus>
     <version.surefire>2.22.0</version.surefire>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
