@@ -36,8 +36,8 @@ public class TradeOrderService {
     @Inject
     EventBus eventBus;
 
-    @PersistenceContext
-    EntityManager entityManager;
+    //@PersistenceContext
+    //EntityManager entityManager;
 
     @Transactional(value = TxType.MANDATORY)
     public void orderCreated(JsonNode event) throws JsonMappingException, JsonProcessingException {
@@ -62,11 +62,9 @@ public class TradeOrderService {
 
         LOGGER.info("Persisting 'TradeOrder': {}", tradeOrder);
 
-        entityManager.persist(tradeOrder);
+        //entityManager.persist(tradeOrder);
 
         final JsonObject jsonObject = JsonObject.mapFrom(tradeOrder);
-
-        LOGGER.info("Check 'jsonObject': {}", jsonObject);
 
         eventBus.publish("order_stream", jsonObject);
     }

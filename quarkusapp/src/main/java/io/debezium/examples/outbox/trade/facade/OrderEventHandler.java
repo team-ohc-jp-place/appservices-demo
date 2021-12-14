@@ -15,7 +15,7 @@ import javax.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import io.debezium.examples.outbox.trade.messagelog.MessageLog;
+//import io.debezium.examples.outbox.trade.messagelog.MessageLog;
 import io.debezium.examples.outbox.trade.service.TradeOrderService;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -26,8 +26,8 @@ public class OrderEventHandler {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(OrderEventHandler.class);
 
-    @Inject
-    MessageLog log;
+    //@Inject
+    //MessageLog log;
 
     @Inject
     TradeOrderService shipmentService;
@@ -41,34 +41,34 @@ public class OrderEventHandler {
             LOGGER.info("Starting onOrderEvent");
 
             JsonNode eventJson = deserialize(payload);
-            LOGGER.info("#1 " + eventJson.asText());
+            //LOGGER.info("#1 " + eventJson.asText());
 
-            UUID eventId = UUID.fromString(eventJson.get("ID").textValue());
-            LOGGER.info("#2 " + eventId.toString());
+            //UUID eventId = UUID.fromString(eventJson.get("ID").textValue());
+            //LOGGER.info("#2 " + eventId.toString());
 
-            String eventType = eventJson.get("TYPE").textValue();
-            LOGGER.info("#3 " + eventType);
+            //String eventType = eventJson.get("TYPE").textValue();
+            //LOGGER.info("#3 " + eventType);
 
 
-            if (log.alreadyProcessed(eventId)) {
-                LOGGER.info("Event with UUID {} was already retrieved, ignoring it", eventId);
-                return;
-            }
+            //if (log.alreadyProcessed(eventId)) {
+            //    LOGGER.info("Event with UUID {} was already retrieved, ignoring it", eventId);
+            //    return;
+            //}
 
             LOGGER.info("Continuing onOrderEvent");
 
             JsonNode eventPayload = eventJson.get("PAYLOAD");
 
-            LOGGER.info("Received 'Order' event -- event id: '{}', event type: '{}'", eventId, eventType);
+            //LOGGER.info("Received 'Order' event -- event id: '{}', event type: '{}'", eventId, eventType);
 
-            if (eventType.equals("OrderCreated")) {
+            //if (eventType.equals("OrderCreated")) {
                 shipmentService.orderCreated(eventPayload);
-            }
-            else {
-                LOGGER.warn("Unkown event type");
-            }
+            //}
+            //else {
+            //    LOGGER.warn("Unkown event type");
+            //}
 
-            log.processed(eventId);
+            //log.processed(eventId);
 
         }
         catch(Exception e) {
