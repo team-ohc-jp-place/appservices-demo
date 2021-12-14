@@ -15,12 +15,12 @@ import javax.persistence.Id;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-@Entity
+//@Entity
 public class TradeOrder {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", updatable = false, nullable = false)
+    //@Id
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@Column(name = "id", updatable = false, nullable = false)
     private long id;
     private long orderId;
     private String orderType;
