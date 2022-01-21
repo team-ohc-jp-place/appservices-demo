@@ -6,7 +6,7 @@ export OCP_USER=opentlc-mgr
 
 export OCP_PASSWORD=r3dh4t1!
 
-export PJ_NAME=commons-demo
+export PJ_NAME=demo-pj
 ```
 
 ## OpenShift Login

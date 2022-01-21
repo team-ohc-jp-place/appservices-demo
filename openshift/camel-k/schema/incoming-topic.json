@@ -1,0 +1,9 @@
+{
+  "orderId": 1,
+  "orderType": "A",
+  "orderItemName": "Lime",
+  "quantity": 100,
+  "price": 50,
+  "shipmentAddress": "541-428 Nulla Avenue",
+  "zipCode": "4286"
+}

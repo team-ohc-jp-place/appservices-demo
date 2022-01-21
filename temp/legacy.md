@@ -1,21 +1,21 @@
 project
     db_earth_namespace: "shared-db-earth"
-    kafka_earth_namespace: "shared-kafka-earth"
+    kafka_earth_namespace: "demo-pj"
     app_earth_namespace: "shared-app-earth"
 
 oc new-project shared-db-earth
-oc new-project shared-kafka-earth
+oc new-project demo-pj
 oc new-project shared-app-earth
-oc new-project commons-demo
+oc new-project demo-pj
 
 # AMQ Streams Operator
 oc apply -f ./openshift/kafka/amq-streams-operator.yaml
 
 # Create Kafka Cluster
-oc apply -n shared-kafka-earth -f ./openshift/legacy/kafka-earth.yaml
+oc apply -n demo-pj -f ./openshift/legacy/kafka-earth.yaml
 
 # Deploy Kafdrop
-oc apply -n shared-kafka-earth -f ./openshift/legacy/kafdrop4.yaml
+oc apply -n demo-pj -f ./openshift/legacy/kafdrop4.yaml
 
 # Enable anyuid on Database Namespace
 oc apply -n shared-db-earth -f ./openshift/legacy/scc-anyuid.yaml
@@ -39,12 +39,12 @@ oc new-app quay.io/hguerreroo/my-apache-php-app:latest -e 'SERVER_NAME=mssql-ser
 oc expose service my-apache-php-app --name=www -n shared-app-earth
 
 # Debezium
-oc apply -n commons-demo -f ./openshift/legacy/debezium.yaml
-oc apply -n commons-demo -f ./openshift/legacy/orders-connector.yaml
+oc apply -n demo-pj -f ./openshift/legacy/debezium.yaml
+oc apply -n demo-pj -f ./openshift/legacy/orders-connector.yaml
 
 
 # Delete
 oc delete project shared-db-earth
-oc delete project shared-kafka-earth
+oc delete project demo-pj
 oc delete project shared-app-earth
-oc delete project commons-demo
+oc delete project demo-pj

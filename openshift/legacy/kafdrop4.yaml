@@ -3,7 +3,7 @@ kind: DeploymentConfig
 apiVersion: v1
 metadata:
   name: kafdrop
-  namespace: shared-kafka-earth
+  namespace: demo-pj
   labels:
     app: kafdrop
   annotations:

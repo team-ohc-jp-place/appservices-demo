@@ -16,5 +16,5 @@ spec:
     database.dbname: "InternationalDB"
     database.server.name: "user1.earth"
     table.whitelist: "dbo.Orders"
-    database.history.kafka.bootstrap.servers: "earth-cluster-kafka-bootstrap.shared-kafka-earth.svc:9092"
+    database.history.kafka.bootstrap.servers: "earth-cluster-kafka-bootstrap.demo-pj.svc:9092"
     database.history.kafka.topic: "user1.earth.dbhistory"

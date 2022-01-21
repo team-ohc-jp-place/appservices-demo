@@ -3,7 +3,7 @@ kind: DeploymentConfig
 apiVersion: v1
 metadata:
   name: db-events-kafdrop
-  namespace: commons-demo
+  namespace: demo-pj
   labels:
     app: kafdrop
   annotations:

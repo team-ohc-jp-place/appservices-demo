@@ -21,7 +21,7 @@ docker-compose exec kafka bin/kafka-console-producer.sh --topic incoming-topic -
 # consumer
 docker-compose exec kafka bin/kafka-console-consumer.sh --topic <topic>  --bootstrap-server localhost:9092
 
-docker-compose exec kafka bin/kafka-console-consumer.sh --topic outgoing-topic --bootstrap-server localhost:9092
+docker-compose exec kafka bin/kafka-console-consumer.sh --topic outcoming-topic --bootstrap-server localhost:9092
 
-
+# topic delete
 docker-compose exec kafka bin/kafka-topics.sh --delete --bootstrap-server localhost:9092 --topic incoming-topic 
