@@ -109,7 +109,7 @@ docker images
 mvn clean package -Pnative -Dnative-image.docker-build=true -f quarkusapp
 cd quarkusapp
 docker build -t kamorisan/quarkusapp:v1 -f ./src/main/docker/Dockerfile.native .
-docker build -t quay.io/kamori/quarkusapp:v1 -f ./src/main/docker/Dockerfile.native .
+docker push kamorisan/quarkusapp:v1
 
 oc new-app --as-deployment-config --name quarkusapp --docker-image="kamorisan/quarkusapp:v1" -n demo-pj
 oc apply -f ./openshift/quarkusapp/service-quarkusapp.yml -n demo-pj

@@ -27,7 +27,7 @@ objects:
     runPolicy: Serial
     source:
       git:
-        uri: https://github.com/kamorisan/demo-pj.git
+        uri: https://github.com/kamorisan/commons-demo.git
       type: Git
       contextDir: "decision-service"
     strategy:
@@ -66,7 +66,7 @@ objects:
     - annotations: null
       from:
         kind: DockerImage
-        name: image-registry.openshift-image-registry.svc:5000/demo-pj/decision-service:latest
+        name: image-registry.openshift-image-registry.svc:5000/commons-demo/decision-service:latest
       generation: null
       importPolicy: {}
       name: latest
@@ -89,7 +89,7 @@ objects:
       spec:
         containers:
           - name: "decision-service"
-            image: "demo-pj/decision-service"
+            image: "commons-demo/decision-service"
     replicas: 1 
     selector:
       name: "decision-service"
