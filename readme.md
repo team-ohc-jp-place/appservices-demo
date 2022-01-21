@@ -2,3 +2,5 @@
 * プロジェクトをローカルに clone
 * ターミナルから OpenShift に Login する
 * `provision.sh` を実行！
+
+詳細説明は工事中。。。
