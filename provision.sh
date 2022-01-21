@@ -51,8 +51,13 @@ sleep 30
     if [ "$(oc get kafka -n ${PRJ[0]} earth-cluster)" ] ; then
         echo "kafka-cluster already exists..."
     else
-        oc apply -n ${PRJ[0]} -f ./openshift/legacy/kafka-earth.yaml
+        oc apply -n ${PRJ[0]} -f ./openshift/kafka/kafka-earth.yaml
     fi
+
+Sleep 15
+
+# Kafka Topic Create
+oc apply -n ${PRJ[0]} -f ./openshift/kafka/kafkatopic-create.yaml
 
 Sleep 15
 
@@ -63,7 +68,7 @@ oc apply -f ./openshift/nexus/nexusrepo-deploy.yaml -n ${PRJ[0]}
     if [ "$(oc get dc kafdrop -n ${PRJ[0]})" ] ; then
         echo "kafdrop already exists..."
     else
-        oc apply -n ${PRJ[0]} -f ./openshift/legacy/kafdrop4.yaml
+        oc apply -n ${PRJ[0]} -f ./openshift/kafka/kafdrop4.yaml
     fi
 
 sleep 5

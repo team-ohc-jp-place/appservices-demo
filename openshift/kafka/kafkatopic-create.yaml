@@ -1,11 +1,10 @@
----
 apiVersion: kafka.strimzi.io/v1beta2
 kind: KafkaTopic
 metadata:
   name: incoming-topic
   labels:
-    strimzi.io/cluster: my-cluster
-  # namespace: kogito
+    strimzi.io/cluster: earth-cluster
+    namespace: demo-pj
 spec:
   config:
     retention.ms: 604800000
@@ -18,8 +17,8 @@ kind: KafkaTopic
 metadata:
   name: outcoming-topic
   labels:
-    strimzi.io/cluster: my-cluster
-  # namespace: kogito
+    strimzi.io/cluster: earth-cluster
+    namespace: demo-pj
 spec:
   config:
     retention.ms: 604800000
