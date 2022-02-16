@@ -25,17 +25,3 @@ spec:
     segment.bytes: 1073741824
   partitions: 1
   replicas: 3
----
-apiVersion: kafka.strimzi.io/v1beta2
-kind: KafkaTopic
-metadata:
-  name: user1.earth.dbo.Orders
-  labels:
-    strimzi.io/cluster: earth-cluster
-    namespace: demo-pj
-spec:
-  config:
-    retention.ms: 604800000
-    segment.bytes: 1073741824
-  partitions: 1
-  replicas: 3
