@@ -27,7 +27,7 @@ objects:
     runPolicy: Serial
     source:
       git:
-        uri: https://github.com/kamorisan/commons-demo.git
+        uri: https://github.com/team-ohc-jp-place/commons-demo.git
       type: Git
       contextDir: "decision-service"
     strategy:
