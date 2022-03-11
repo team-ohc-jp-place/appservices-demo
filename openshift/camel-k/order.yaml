@@ -1,13 +1,15 @@
 - from:
-    uri: 'kamelet:kafka-not-secured-source'
+    uri: kamelet:kafka-not-secured-source
     steps:
       - to:
-          uri: 'atlasmap:file:/etc/camel/resources/order-mapping.adm'
+          uri: atlasmap:file:/etc/camel/resources/order-mapping.adm
+      - kamelet:
+          name: log-sink
       - kamelet:
           name: kafka-not-secured-sink
           parameters:
             topic: incoming-topic
-            brokers: 'earth-cluster-kafka-bootstrap.demo-pj.svc:9092'
+            brokers: earth-cluster-kafka-bootstrap.demo-pj.svc:9092
     parameters:
       topic: user1.earth.dbo.Orders
-      brokers: 'earth-cluster-kafka-bootstrap.demo-pj.svc:9092'
+      brokers: earth-cluster-kafka-bootstrap.demo-pj.svc:9092
