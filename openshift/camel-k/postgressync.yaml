@@ -8,7 +8,7 @@
           name: kafka-not-secured-sink
           parameters:
             topic: outcoming-topic
-            brokers: earth-cluster-kafka-bootstrap.demo-pj.svc:9092
+            brokers: earth-cluster-kafka-bootstrap.integration-demo.svc:9092
       - kamelet:
           name: postgresql-sink
           parameters:
@@ -22,4 +22,4 @@
             databaseName: postgres
     parameters:
       topic: incoming-topic
-      brokers: earth-cluster-kafka-bootstrap.demo-pj.svc:9092
+      brokers: earth-cluster-kafka-bootstrap.integration-demo.svc:9092

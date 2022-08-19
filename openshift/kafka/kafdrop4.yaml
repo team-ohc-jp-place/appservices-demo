@@ -3,7 +3,7 @@ kind: DeploymentConfig
 apiVersion: v1
 metadata:
   name: kafdrop
-  namespace: demo-pj
+  namespace: integration-demo
   labels:
     app: kafdrop
   annotations:

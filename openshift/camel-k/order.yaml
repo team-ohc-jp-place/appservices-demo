@@ -7,7 +7,7 @@
           name: kafka-not-secured-sink
           parameters:
             topic: incoming-topic
-            brokers: earth-cluster-kafka-bootstrap.demo-pj.svc:9092
+            brokers: earth-cluster-kafka-bootstrap.integration-demo.svc:9092
     parameters:
       topic: user1.earth.dbo.Orders
-      brokers: earth-cluster-kafka-bootstrap.demo-pj.svc:9092
+      brokers: earth-cluster-kafka-bootstrap.integration-demo.svc:9092

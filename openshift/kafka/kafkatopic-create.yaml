@@ -4,7 +4,7 @@ metadata:
   name: incoming-topic
   labels:
     strimzi.io/cluster: earth-cluster
-    namespace: demo-pj
+    namespace: integration-demo
 spec:
   config:
     retention.ms: 604800000
@@ -18,7 +18,7 @@ metadata:
   name: outcoming-topic
   labels:
     strimzi.io/cluster: earth-cluster
-    namespace: demo-pj
+    namespace: integration-demo
 spec:
   config:
     retention.ms: 604800000

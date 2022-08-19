@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ## Create Project
-PRJ[0]="demo-pj"
+PRJ[0]="integration-demo"
 PRJ[1]="shared-db-earth"
 PRJ[2]="shared-app-earth"
 

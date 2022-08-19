@@ -5,7 +5,7 @@ metadata:
   annotations:
     strimzi.io/use-connector-resources: "true"
 spec:
-  bootstrapServers: 'earth-cluster-kafka-bootstrap.demo-pj.svc:9092'
+  bootstrapServers: 'earth-cluster-kafka-bootstrap.integration-demo.svc:9092'
   image: 'quay.io/hguerreroo/rhi-cdc-connect:2020-Q2'
   replicas: 1
   resources:
