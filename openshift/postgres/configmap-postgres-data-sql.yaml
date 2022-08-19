@@ -1,0 +1,20 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: postgres-data-sql
+data:
+  data.sql: |-
+    -- Create a table Orders.
+    -- Connect to the 'postgres' database to run this snippet.
+    
+    CREATE TABLE Orders (
+    OrderId integer not null primary key,
+    OrderType varchar(1), 
+    OrderItemName varchar(50), 
+    Quantity integer,
+    Price varchar(50) , 
+    ShipmentAddress varchar(100) ,
+        ZipCode varchar(10),
+        OrderUser varchar(10)
+    );
+    

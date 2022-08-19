@@ -1,0 +1,3 @@
+com/redhat/demo/webapp/consumer/OrderEventHandler.class
+com/redhat/demo/webapp/consumer/KafkaEventConsumer.class
+com/redhat/demo/webapp/consumer/EarthOrderResource.class

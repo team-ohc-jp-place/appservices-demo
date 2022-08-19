@@ -1,0 +1,71 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: postgres-server-linux
+    app.kubernetes.io/component: postgres-server-linux
+    app.kubernetes.io/instance: postgres-server-linux
+    app.kubernetes.io/part-of: enterprise-app
+    app.openshift.io/runtime: postgres
+  name: postgres-server-linux
+spec:
+  selector:
+    matchLabels:
+      app: postgres-server-linux
+  template:
+    metadata:
+      labels:
+        app: postgres-server-linux
+        deploymentconfig: postgres-server-linux
+    spec:
+      volumes:
+        - name: postgres-data-sql
+          configMap:
+            name: postgres-data-sql
+            defaultMode: 420
+      containers:
+      - env:
+        - name: POSTGRES_DB
+          value: postgres
+        - name: POSTGRES_USER
+          value: postgres
+        - name: POSTGRES_PASSWORD
+          value: postgres
+        - name: PGDATA
+          value: /temp/data
+        image: postgres:9.5
+        imagePullPolicy: Always
+        name: postgres
+        ports:
+        - containerPort: 5432
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 60m
+            memory: 512Mi
+          requests:
+            cpu: 30m
+            memory: 128Mi
+        volumeMounts:
+          - name: postgres-data-sql
+            mountPath: /temp/workshop
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: postgres-server-linux
+    app.kubernetes.io/component: postgres-server-linux
+    app.kubernetes.io/instance: postgres-server-linux
+    app.kubernetes.io/part-of: enterprise-app
+  name: postgres-server-linux
+spec:
+  ports:
+  - name: http
+    port: 5432
+    protocol: TCP
+  selector:
+    app: postgres-server-linux
+  type: ClusterIP

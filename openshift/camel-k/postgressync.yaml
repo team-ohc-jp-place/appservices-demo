@@ -5,9 +5,14 @@
           message: Sync the database changes.
           logName: sync message
       - kamelet:
+          name: kafka-not-secured-sink
+          parameters:
+            topic: outcoming-topic
+            brokers: earth-cluster-kafka-bootstrap.demo-pj.svc:9092
+      - kamelet:
           name: postgresql-sink
           parameters:
-            serverName: 172.30.243.226
+            serverName: postgres-server-linux.shared-db-earth.svc
             username: postgres
             password: postgres
             serverPort: '5432'
@@ -15,11 +20,6 @@
               INSERT INTO Orders (OrderId,OrderType,OrderItemName,Quantity,Price,ShipmentAddress,ZipCode) VALUES
               (:#orderId,:#orderType,:#orderItemName,:#quantity,:#price,:#shipmentAddress,:#zipCode);
             databaseName: postgres
-      - kamelet:
-          name: kafka-not-secured-sink
-          parameters:
-            topic: outcoming-topic
-            brokers: earth-cluster-kafka-bootstrap.demo-pj.svc:9092
     parameters:
       topic: incoming-topic
       brokers: earth-cluster-kafka-bootstrap.demo-pj.svc:9092
