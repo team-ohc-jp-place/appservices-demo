@@ -106,7 +106,8 @@ sleep 5
 
 # Deploy Earth Application
 SERVER_NAME=mssql-server-linux.${PRJ[1]}.svc
-oc new-app quay.io/hguerreroo/my-apache-php-app:latest -e SERVER_NAME=${SERVER_NAME} -n ${PRJ[2]}
+#oc new-app quay.io/hguerreroo/my-apache-php-app:latest -e SERVER_NAME=${SERVER_NAME} -n ${PRJ[2]}
+oc new-app quay.io/nmushino/my-apache-php-app:latest -e SERVER_NAME=${SERVER_NAME} -n ${PRJ[2]}
 
 sleep 5
 
@@ -124,7 +125,7 @@ oc apply -n ${PRJ[0]} -f ./openshift/legacy/orders-connector.yaml
 #sleep 5
 
 #MAVEN_MIRROR_URL=$(oc get route nexusrepo-sonatype-nexus-service --template='http://{{.spec.host}}' -n ${PRJ[0]})
-    
+
 #while [ 1 ]; do
 #  STAT=$(curl -s -w '%{http_code}' -o /dev/null ${MAVEN_MIRROR_URL})
 #  if [ "$STAT" = 200 ] ; then
