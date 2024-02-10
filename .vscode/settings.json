@@ -1,0 +1,4 @@
+{
+    "maven.terminal.useJavaHome": true,
+    "java.home": "/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home"
+}

@@ -17,7 +17,7 @@ data:
     CREATE DATABASE InternationalDB
     GO
     -- Modified Transact-SQL to support Japanese
-    ALTER DATABASE InternationalDB COLLATE Japanese_CI_AS
+    ALTER DATABASE InternationalDB COLLATE Japanese_XJIS_100_CI_AS
     GO
     -- Connect to the 'InternationalDB' database to run this snippet
     USE InternationalDB

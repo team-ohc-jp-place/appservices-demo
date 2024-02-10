@@ -30,19 +30,13 @@ sleep 5
     fi
 
 # Camel K Operator
-    if [ "$(oc -n ${PRJ[0]} get subscription camel-k)" ] ; then
-        echo "Camel K Operator already exists..."
-    else
-        oc apply -f ./openshift/camel-k/camel-k-operator.yaml
-    fi
-
-# Nexus Repository Operator
-#    if [ "$(oc -n openshift-operators get subscription nxrm-operator-certified)" ] ; then
-#        echo  "Nexus Repository Operator already exists..."
+#    if [ "$(oc -n ${PRJ[0]} get subscription camel-k)" ] ; then
+#        echo "Camel K Operator already exists..."
 #    else
-#        oc apply -f ./openshift/nexus/nexus-operator.yaml
+#        oc apply -f ./openshift/camel-k/camel-k-operator.yaml
 #    fi
-#
+
+
 sleep 30
 
 ## Kafka Deploy
@@ -59,9 +53,6 @@ Sleep 15
 oc apply -n ${PRJ[0]} -f ./openshift/kafka/kafkatopic-create.yaml
 
 Sleep 15
-
-# Nexus Deploy
-#oc apply -f ./openshift/nexus/nexusrepo-deploy.yaml -n ${PRJ[0]}
 
 # Kafdrop Deploy
     if [ "$(oc get dc kafdrop -n ${PRJ[0]})" ] ; then
@@ -121,22 +112,6 @@ oc apply -n ${PRJ[0]} -f ./openshift/legacy/debezium.yaml
 oc apply -n ${PRJ[0]} -f ./openshift/legacy/orders-connector.yaml
 
 # Decision Service Deploy
-#oc expose svc/nexusrepo-sonatype-nexus-service -n ${PRJ[0]}
-#sleep 5
-
-#MAVEN_MIRROR_URL=$(oc get route nexusrepo-sonatype-nexus-service --template='http://{{.spec.host}}' -n ${PRJ[0]})
-
-#while [ 1 ]; do
-#  STAT=$(curl -s -w '%{http_code}' -o /dev/null ${MAVEN_MIRROR_URL})
-#  if [ "$STAT" = 200 ] ; then
-#    sleep 5
-#    #oc new-app -f ./openshift/kogito/decision-service.yaml -n ${PRJ[0]} -p MAVEN_MIRROR_URL=${MAVEN_MIRROR_URL}"/repository/maven-public/"
-#    break
-#  fi
-#    echo waiting...
-#    sleep 10
-#done
-
 ## Create Database Install & Create Table
 
 for i in "${PRJ[@]}"
@@ -165,14 +140,9 @@ kamel run ./openshift/camel-k/order.yaml --resource file:openshift/camel-k/order
 kamel run ./openshift/camel-k/postgressync.yaml -n ${PRJ[0]} 
 
 ## Quarkus Application Deploy
-#oc new-app --as-deployment-config --name quarkusapp --docker-image="kamorisan/quarkusapp:v1" -n ${PRJ[0]}
-#oc apply -f ./openshift/quarkusapp/service-quarkusapp.yml -n ${PRJ[0]}
-#oc apply -f ./openshift/quarkusapp/route-quarkusapp.yml -n ${PRJ[0]}
-#oc patch dc quarkusapp -n ${PRJ[0]} -p '{"metadata":{"labels":{"app.kubernetes.io/part-of":"modern-app"}}}'
-
 oc project ${PRJ[0]}
 cd ./apps/quarkusapp
-./mvnw clean package -Dquarkus.kubernetes.deploy=true
+./mvnw clean package -Dquarkus.kubernetes.deploy=true 
 oc patch dc quarkusapp -n ${PRJ[0]} -p '{"metadata":{"labels":{"app.kubernetes.io/part-of":"modern-app"}}}'
 
 ## Quarkus Application API Provider Integrations

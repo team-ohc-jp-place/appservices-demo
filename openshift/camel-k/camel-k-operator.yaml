@@ -6,9 +6,9 @@ metadata:
   name: camel-k
   namespace: openshift-operators
 spec:
-  channel: stable-1.7
+  channel: latest
   installPlanApproval: Automatic
   name: camel-k
   source: community-operators
   sourceNamespace: openshift-marketplace
-  #startingCSV: camel-k-operator.v1.7.0
+  
