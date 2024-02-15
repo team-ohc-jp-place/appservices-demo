@@ -3,7 +3,7 @@
     from:
       uri: kafka
       parameters:
-        brokers: earth-cluster-kafka-bootstrap.integration-demo.svc.cluster.local:9092
+        brokers: earth-cluster-kafka-bootstrap.integration-demo.svc:9092
         topic: user1.earth.dbo.Orders
       steps:
         - to:
@@ -11,5 +11,5 @@
         - to:
             uri: kafka
             parameters:
-              brokers: earth-cluster-kafka-bootstrap.integration-demo.svc.cluster.local:9092
+              brokers: earth-cluster-kafka-bootstrap.integration-demo.svc:9092
               topic: incoming-topic
