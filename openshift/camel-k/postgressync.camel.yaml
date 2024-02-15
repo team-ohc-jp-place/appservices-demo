@@ -1,31 +1,14 @@
 - route:
     id: route-2980
     from:
-      uri: kafka:incoming-topic?brokers=earth-cluster-kafka-bootstrap.integration-demo.svc:9092
-#      parameters:
-#        brokers: earth-cluster-kafka-bootstrap.integration-demo.svc:9092
-#        topic: incoming-topic
+      uri: kafka
+      parameters:
+        brokers: earth-cluster-kafka-bootstrap.integration-demo.svc.cluster.local:9092
+        topic: incoming-topic
       steps:
         - log:
             logName: sync message
             message: Sync the database changes.
-#        - kamelet:
-#            parameters:
-#              brokers: earth-cluster-kafka-bootstrap.integration-demo.svc:9092
-#              topic: outcoming-topic
-#            name: kafka-not-secured-sink
-#        - kamelet:
-#            parameters:
-#              databaseName: postgres
-#              password: postgres
-#              query: INSERT INTO Orders
-#                (OrderId,OrderType,OrderItemName,Quantity,Price,ShipmentAddress,ZipCode)
-#                VALUES
-#                (:#orderId,:#orderType,:#orderItemName,:#quantity,:#price,:#shipmentAddress,:#zipCode);
-#              serverName: postgres-server-linux.shared-db-earth.svc
-#              serverPort: "5432"
-#              username: postgres
-#            name: postgresql-sink
         - to:
             id: to-3499
             uri: kamelet:postgresql-sink

@@ -37,7 +37,7 @@ sleep 5
 #    fi
 
 
-sleep 30
+sleep 180
 
 ## Kafka Deploy
 # Kafka-Cluster Deploy
