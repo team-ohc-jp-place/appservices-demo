@@ -21,3 +21,8 @@
                 (:#orderId,:#orderType,:#orderItemName,:#quantity,:#price,:#shipmentAddress,:#zipCode);
               serverName: postgres-server-linux.shared-db-earth.svc
               username: postgres
+        - to:
+            uri: kafka
+            parameters:
+              brokers: earth-cluster-kafka-bootstrap.integration-demo.svc:9092
+              topic: outcoming-topic
